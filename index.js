@@ -52,7 +52,7 @@ if (cluster.isMaster) {
                 return res.status(500).json({ error: 'Failed to process file' });
             }
 
-            res.json({ filename: newName, filePath: `/static/${newName}` }); // Возвращаем клиенту имя файла и путь
+            res.json({ filename: newName, filePath: `/statics/${newName}` }); // Возвращаем клиенту имя файла и путь
         });
     });
 
