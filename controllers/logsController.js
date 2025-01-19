@@ -21,8 +21,8 @@ class LogsController {
         const logs = await Logs.findAll()
 
         if (logs && logs.length) {
-            for (let log in logs) {
-                await log.destroy()
+            for (let i in logs) {
+                await logs[i].destroy()
             }
         }
 
