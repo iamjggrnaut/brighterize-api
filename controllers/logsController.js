@@ -18,7 +18,13 @@ class LogsController {
     }
 
     async removeAllLogs(req, res) {
-        const logs = await Logs.destroy()
+        const logs = await Logs.findAll()
+
+        if (logs && logs.length) {
+            for (let log in logs) {
+                await log.destroy()
+            }
+        }
 
         return res.json(logs)
     }
