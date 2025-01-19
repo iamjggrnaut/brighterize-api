@@ -183,7 +183,7 @@ class UserController {
 
 
     async login(req, res, next) {
-        const { email, password, latitude, longitude } = req.body;
+        const { email, password } = req.body;
 
         // Поиск пользователя по email
         const user = await User.findOne({ where: { email } });
@@ -203,7 +203,7 @@ class UserController {
             user_id: user.id,
             first_name: user.first_name,
             last_name: user.last_name,
-            ip_address: `${latitude} ${longitude}`
+            ip_address: ip
         })
 
         // Генерация JWT
