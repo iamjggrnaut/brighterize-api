@@ -197,7 +197,7 @@ class UserController {
             return next(ApiError.internal('Wrong password'));
         }
 
-        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.socket.remoteAddress;
 
         await Logs.create({
             user_id: user.id,
